@@ -1,0 +1,14 @@
+set term png
+set output 'img_arnold.png'
+set origin 0,0
+set xtics 0,0.01,0.1
+set ytics 
+set mxtics 1
+set mytics 1
+
+set title "Synchronization of two Arnold's Cat Map"
+set xlabel "Time"
+set ylabel "Variation in the difference of the two systems"
+set key below
+
+plot "arnold_datum.dat" using 1:($4-$2) title "x2-x1" with lines, "arnold_datum.dat" using 1:($5-$3) title "y2-y1" with lines
