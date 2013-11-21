@@ -43,7 +43,8 @@ void RabinoFabrik::init()
 
   printf("# :: OUTPUT :: \n");
 std::cout<<"# T"<<setw(15)<<" X[0]"<<setw(15)<<" X[1]"<<setw(15)<<" X[2]"<<setw(15)<<" Y[0]"<<setw(15)<<" Y[1]"<<setw(15)<<" Y[2]\n\n";
-fprintf(pFile,"#\tt\t\tx[0] \t\t x[1] \t\t x[2] \t\t y[0] \t\t y[1] \t\t y[2] \n");
+fprintf(pFile,"# SYSTEM: Rabinovich-fabrikant--- \n");
+fprintf(pFile,"#\tt\t\t\tx[0] \t\t\t x[1] \t\t\t x[2] \t\t\t y[0] \t\t\t y[1] \t\t\t y[2] \n");
 
  
   for(t=BEGIN; t<=END; t+=DT)
@@ -71,7 +72,7 @@ fprintf (pFile, "%10.6f \t  %10.6f \t  %10.6f \t  %10.6f \t  %10.6f \t  %10.6f \
 
   }
 
-fprintf(pFile,"\n\n#Rabinovich-Fabrikant synchronising AT STEP: %f\n\n",i);
+fprintf(pFile,"\n#Synchronisation Step: %f\n\n",i);
 
 fclose (pFile);
 }

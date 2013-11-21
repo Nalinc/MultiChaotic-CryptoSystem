@@ -24,8 +24,8 @@ pFile = fopen ("arnold_datum.dat","w");
 cout<<"# T"<<setw(20)<<" X1"<<setw(20)<<" Y1"<<setw(20)<<" X2"<<setw(20)<<" Y2\n";
 cout<<"#----------------------------------------------------------------------------------\n\n";
 
-fprintf(pFile,"#\tt  \t\t  x1 \t\t y1 \t\t x2 \t\t y2 \n");
-fprintf(pFile,"#--------------------------------------------------------\n");
+fprintf(pFile,"# SYSTEM: Arnold's Cat map--- \n");
+fprintf(pFile,"#\t\tt  \t\t\t  x1 \t\t\t y1 \t\t\t x2 \t\t\t y2 \n");
 
    for(t=0.000;t<0.1;t+=0.001)
   {     
@@ -46,7 +46,7 @@ fprintf(pFile,"#--------------------------------------------------------\n");
      }
   }
   
-fprintf(pFile,"\n\n#Arnold's Cat Map synchronising AT STEP: %f\n\n",i);
+fprintf(pFile,"\n#Synchronisation Step: %f\n\n",i);
 
 fclose (pFile);
 
