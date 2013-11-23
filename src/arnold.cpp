@@ -46,7 +46,7 @@ fprintf(pFile,"#\t\tt  \t\t\t  x1 \t\t\t y1 \t\t\t x2 \t\t\t y2 \n");
      }
   }
   
-fprintf(pFile,"\n#Synchronisation Step: %f\n\n",i);
+fprintf(pFile,"\n#Synchronisation Step: %f",i);
 
 fclose (pFile);
 

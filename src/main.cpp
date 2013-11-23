@@ -6,7 +6,8 @@
 //#include "cipher.h"
 /*
   
- ./run	 									:GUI interface
+ ./run -GUI									:GUI interface
+ ./run -CLI
  ./run -help                                :Displays Help
  ./run -sync								:synchronizes the systems
  ./run -p chaos								:plots 
@@ -44,17 +45,17 @@ else if(argc==2 && strcmp(argv[1],"-sync")==0)
 }
 else if(argc==3 && strcmp(argv[1],"-e")==0 && strcmp(argv[2],"-i")==0)
 {
-	//argv[3]
+	//argv[3] contains filename
 	cout<<"Code To encrypt Image\n";
 }
 else if(argc==3 && strcmp(argv[1],"-e")==0 && strcmp(argv[2],"-t")==0 )
 {
-	//argv[3]
+	//argv[3] contains filename
 	cout<<"Code To encrypt Text\n";
 }
 else if(argc==3 && strcmp(argv[1],"-e")==0 && (strcmp(argv[2],"-a")==0 || strcmp(argv[2],"-v")==0))
 {
-	//argv[3]
+	//argv[3] contains filename
 	cout<<"Code To encrypt Audio/video\n";
 }
 

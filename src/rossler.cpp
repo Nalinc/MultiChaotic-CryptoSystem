@@ -58,7 +58,7 @@ fprintf (pFile, "%10.6f \t  %10.6f \t  %10.6f \t  %10.6f \t  %10.6f \t  %10.6f \
 
   }
 
-fprintf(pFile,"\n#Synchronisation Step: %f\n\n",i);
+fprintf(pFile,"\n#Synchronisation Step: %f",i);
 
 fclose (pFile);
 }
