@@ -10,7 +10,7 @@ offset=calcOff()+3;
 func();
 Decode();
 
-cout<<"\n\tconverting..";
+cout<<"\n\t\t\tTask Completed..";
 return 1;
 }
 //</EncodeText>
@@ -18,7 +18,7 @@ return 1;
 //<EncodeImage>
 int Decrypt::decodeImage()
 {
-cout<<"\n\tconverting..";
+cout<<"\n\t\t\tTask Completed..";
 return 1;
 }
 //</EncodeImage>
@@ -26,7 +26,7 @@ return 1;
 //<EncodeAV>
 int Decrypt::decodeAV()
 {
-cout<<"\n\tconverting..";
+cout<<"\n\t\t\tTask Completed..";
 return 1;
 }
 //</EncodeAV>
@@ -82,7 +82,7 @@ int Decrypt::calcOff()
 {
 	char ptx[200],pty[200];
 	int num;
-    rdfile = fopen("../rossler_datum.dat", "r");
+    rdfile = fopen("./rossler_datum.dat", "r");
     if(rdfile == NULL) 
 	{  printf("\n\n rossler_datum.dat could not be opened for reading. \n\n ");
 	   exit(0);
@@ -117,7 +117,7 @@ void Decrypt::func()
     
    	char pta[200],ptb[200],ptc[200],ptd[200],pte[200],ptf[200],ptg[200];
 
-     rdfile = fopen("../rossler_datum.dat", "r");
+     rdfile = fopen("./rossler_datum.dat", "r");
       if(rdfile == NULL) 
 	  {  printf("\n\n rossler_datum.dat could not be opened for reading. \n\n ");
 	    exit(0);
@@ -252,7 +252,7 @@ void Decrypt::Decode()
       while(fscanf(rdf,"%s",tmp)!=EOF)
       {	      
 		r=strtol(tmp, (char **)NULL, 2);
-        printf("%c ",r);		
+        printf("%c",r);		
        }
 	free(rdf);
 }

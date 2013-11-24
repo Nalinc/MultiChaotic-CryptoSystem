@@ -19,6 +19,7 @@ void Rossler::compute(double x, double *y, double *eq)
 void Rossler::init()
 {
   pFile = fopen ("rossler_datum.dat","w");
+
   printf("# SYSTEM: Rossler Attractor--- \n");
   printf("# The initial values are : \n");
   printf("# x[0] = %f \n", x[0]);
@@ -30,6 +31,7 @@ void Rossler::init()
 
   printf("# :: OUTPUT :: \n");
 std::cout<<"# T"<<setw(15)<<" X[0]"<<setw(15)<<" X[1]"<<setw(15)<<" X[2]"<<setw(15)<<" Y[0]"<<setw(15)<<" Y[1]"<<setw(15)<<" Y[2]\n\n";
+
 fprintf(pFile,"# SYSTEM: Rossler Attractor--- \n");
 fprintf(pFile,"#\tt\t\t\tx[0] \t\t\t x[1] \t\t\t x[2] \t\t\t y[0] \t\t\t y[1] \t\t\t y[2] \n");
 
@@ -41,6 +43,7 @@ fprintf(pFile,"#\tt\t\t\tx[0] \t\t\t x[1] \t\t\t x[2] \t\t\t y[0] \t\t\t y[1] \t
      rk4(N, t, y, DT);
 
   std::cout<<fixed<<setprecision(6)<<t<<setw(15)<<x[0]<<setw(15)<<x[1]<<setw(15)<<x[2]<<setw(15)<<y[0]<<setw(15)<<y[1]<<setw(15)<<y[2]<<"\n";
+
 fprintf (pFile, "%10.6f \t  %10.6f \t  %10.6f \t  %10.6f \t  %10.6f \t  %10.6f \t  %10.6f \n", t, x[0], x[1], x[2], y[0], y[1], y[2]);
 
 

@@ -45,16 +45,16 @@ class Decrypt
 		this->f=filename;
 		
 				
-		strcpy(patha,"../encrypted/");
-		strcpy(pathb,"../decrypted/");
-		//patha="../encrypted/"
-		//pathb="../decrypted/"
+		strcpy(patha,"./encrypted/");
+		strcpy(pathb,"./decrypted/");
+		//patha="/encrypted/"
+		//pathb="/decrypted/"
 		
 		strcat(patha,f);
 		strcat(pathb,f);
 
 		
-		p=433494437*2971215073; //10th & 11th Fibonacci Primes 
+		p=433494437U*2971215073U; //10th & 11th Fibonacci Primes 
 		m=0;
 		
 		
@@ -63,7 +63,7 @@ class Decrypt
 			status=this->decodeImage();
 			if(status==1)
 			{
-				cout<<"\t\timage encoded in"<<f<<endl;
+				cout<<"\t\timage decoded at "<<pathb<<endl<<endl;
 			}
 		}
 
@@ -72,7 +72,7 @@ class Decrypt
 			status=this->decodeText();			
 			if(status==1)
 			{
-				cout<<"\t\tText encoded in"<<f<<endl;
+				cout<<"\t\tText decoded at "<<pathb<<endl<<endl;
 			}
 		}
 		
@@ -81,7 +81,7 @@ class Decrypt
 			status=this->decodeAV();			
 			if(status==1)
 			{
-				cout<<"\t\tAV encoded in"<<f<<endl;
+				cout<<"\t\tAV decoded at "<<pathb<<endl<<endl;
 			}
 		}
 	}

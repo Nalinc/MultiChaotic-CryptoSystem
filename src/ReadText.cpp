@@ -1,35 +1,6 @@
-#include <string.h>
-#include <stdio.h>
-#include <fstream>
-#include <bitset>
-#include <iostream>
+#include "ReadText.h"
 
-using namespace std;
-
-class ReadText
-{
-
-public:
-const char *filename;
-char path[40];
-void wrap();	
-
-ReadText ()
-{
-	//Do nothing
-}
-
-ReadText(const char *f)
-{
-	this->filename=f;
-	strcpy(path,"../orig/bin/");
-	strcat(path,filename);
-	
-	wrap();
-}
-}; 
-
-void ReadText::wrap()
+void RT::wrap()
 {
      
      char text[100000];
@@ -39,25 +10,32 @@ void ReadText::wrap()
      //printf("\n\n Enter the text which you want to encrypt : ");
      fgets(text, sizeof(text), stdin);
 		
-	 fstream fout;
+	 ofstream fout;
 	 
-	 fout.open(path,ios::out);	
+	 fout.open((char*)path);	
   
-
+     if(fout==NULL)
+     {
+		 cout<<"\n\nerr..!!\n\n";
+		 exit(0);
+	 }
      str = text;
 
      for (std::size_t i = 0; i < str.size(); i++)
      {
-        cout << bitset<32>(str.c_str()[i]) << endl;
+//        cout << bitset<32>(str.c_str()[i]) << endl;
         fout << bitset<32>(str.c_str()[i]) << endl;
      }
-     
+     cout<<"\nDone.!";   
+	
 	fout.close();
 }
 
 /*
 int main()
 {
-ReadText a("txtbin.dat");	
+	RT r("file.dat");
+
 }
+
 */

@@ -19,7 +19,7 @@ class Encrypt
     int k, m, linecount,lc;
    // static int pass;
    char *check;
-   char patha[40],pathb[40];
+   char patha[40],pathb[40],pathc[40],r;
     unsigned char *ptx, *key;
     int offset;
     long long nn;
@@ -33,7 +33,7 @@ class Encrypt
     int calcOff();
     long long concat(long long ,long long );
 	long long BlumBlumShub(long long);     //PRNG
-	void Encode(FILE*);
+	void Encode();
 	int LineCount();
 	int pass;
 	unsigned long  p;
@@ -47,15 +47,17 @@ class Encrypt
 		this->t=type;
 		this->f=filename;
 		
-		strcpy(patha,"../orig/bin/");
-		strcpy(pathb,"../encrypted/");
-		//patha="../orig/bin/"
-		//patha="../encrypted"
+		strcpy(patha,"./orig/bin/");
+		strcpy(pathb,"./encrypted/bin/");
+		strcpy(pathc,"./encrypted/");
+		//patha="/orig/bin/"
+		//patha="/encrypted"
 		
 		strcat(patha,f);
 		strcat(pathb,f);
+		strcat(pathc,f);
 
-		p=433494437*2971215073; //10th & 11th Fibonacci Primes 
+		p=433494437U*2971215073U; //10th & 11th Fibonacci Primes 
 		m=0;
 		
 		
@@ -64,7 +66,7 @@ class Encrypt
 			status=this->encodeImage();
 			if(status==1)
 			{
-				cout<<"\t\timage encoded in"<<f<<endl;
+				cout<<"\t\timage encoded at "<<pathb<<endl<<endl;
 			}
 		}
 
@@ -73,7 +75,7 @@ class Encrypt
 			status=this->encodeText();			
 			if(status==1)
 			{
-				cout<<"\t\tText encoded in"<<f<<endl;
+				cout<<"\t\tText encoded at "<<pathb<<endl<<endl;
 			}
 		}
 		
@@ -82,7 +84,7 @@ class Encrypt
 			status=this->encodeAV();			
 			if(status==1)
 			{
-				cout<<"\t\tAV encoded in"<<f<<endl;
+				cout<<"\t\tAV encoded at "<<pathb<<endl<<endl;
 			}
 		}
 	}

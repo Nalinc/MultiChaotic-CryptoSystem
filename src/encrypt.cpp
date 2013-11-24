@@ -9,8 +9,9 @@ int Encrypt::encodeText()
 lc=LineCount();
 offset=calcOff()+3;
 func();
+Encode();
 
-cout<<"\n\tconverting..";
+cout<<"\n\t\t\tTask Completed..";
 return 1;
 }
 //</EncodeText>
@@ -18,7 +19,7 @@ return 1;
 //<EncodeImage>
 int Encrypt::encodeImage()
 {
-cout<<"\n\tconverting..";
+cout<<"\n\t\t\tTask Completed..";
 return 1;
 }
 //</EncodeImage>
@@ -26,7 +27,7 @@ return 1;
 //<EncodeAV>
 int Encrypt::encodeAV()
 {
-cout<<"\n\tconverting..";
+cout<<"\n\t\t\tTask Completed..";
 return 1;
 }
 //</EncodeAV>
@@ -82,7 +83,7 @@ int Encrypt::calcOff()
 {
 	char ptx[200],pty[200];
 	int num;
-    rdfile = fopen("../rossler_datum.dat", "r");
+    rdfile = fopen("./rossler_datum.dat", "r");
     if(rdfile == NULL) 
 	{  printf("\n\n rossler_datum.dat could not be opened for reading. \n\n ");
 	   exit(0);
@@ -117,7 +118,7 @@ void Encrypt::func()
     
    	char pta[200],ptb[200],ptc[200],ptd[200],pte[200],ptf[200],ptg[200];
 
-     rdfile = fopen("../rossler_datum.dat", "r");
+     rdfile = fopen("./rossler_datum.dat", "r");
       if(rdfile == NULL) 
 	  {  printf("\n\n rossler_datum.dat could not be opened for reading. \n\n ");
 	    exit(0);
@@ -173,11 +174,10 @@ void Encrypt::func()
 
 	         for(k=0;k<32;k++)
               {
-                  printf("%d",(*(ptx+k)^*(key+k)));
+//                  printf("%d",(*(ptx+k)^*(key+k)));
                   fprintf(fpw,"%d",(*(ptx+k)^*(key+k)));    
               }
               fprintf(fpw,"\n");
-              cout<<endl;
         
 	        m++;
            }
@@ -194,6 +194,7 @@ void Encrypt::func()
  }
 
  free(key); 
+ fclose(fpw); 
  fclose(rdfile);
 }
 //</func>
@@ -235,6 +236,33 @@ long long Encrypt::BlumBlumShub(long long num)  //PRNG
 	return num*num%p;
 }
 
+void Encrypt::Encode()
+{
+	char *tmp;
+	FILE *rdf,*wrf;
+	tmp=(char*)malloc(32);
+     
+      rdf = fopen(pathb,"rb");//"../decrypted/decrypt.dat", "rb");				       //open "txtbin.dat" for reading				   
+      wrf = fopen(pathc,"w");//"../decrypted/decrypt.dat", "rb");				       //open "txtbin.dat" for reading				   
+
+      if(rdf == NULL||tmp==NULL || wrf==NULL) 
+	  {  printf("\n\n decrypt.dat could not be opened for reading. \n\n ");
+	    exit(0);
+	  }
+	  printf("\n\nCipher Text: ");
+      while(fscanf(rdf,"%s",tmp)!=EOF)
+      {	      
+		r=strtol(tmp, (char **)NULL, 2);
+        printf("%c",r);
+        fprintf(wrf,"%c",r);		
+       }
+        printf("\n");	
+        fprintf(wrf,"\n");	
+	fclose(wrf);
+	fclose(rdf);
+
+}
+
 
 /*
 int main()
@@ -247,3 +275,6 @@ return 0;
 }
 
 */
+
+
+
