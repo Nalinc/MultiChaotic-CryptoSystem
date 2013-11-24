@@ -15,7 +15,7 @@ class Decrypt
 	FILE *fpw,*fpr,*rdfile;
     int k, m, linecount,lc, offset, status;
     char *check,*ptx, *key,*d;
-    char patha[40],pathb[40];
+    char patha[40],pathb[40],pathc[40];
     
     long long nn;
    // char *ptx;
@@ -45,14 +45,15 @@ class Decrypt
 		this->f=filename;
 		
 				
-		strcpy(patha,"./encrypted/");
-		strcpy(pathb,"./decrypted/");
+		strcpy(patha,"./encrypted/bin/");
+		strcpy(pathb,"./decrypted/bin/");
+	//	strcpy(pathc,"./decrypted/");
 		//patha="/encrypted/"
 		//pathb="/decrypted/"
 		
 		strcat(patha,f);
 		strcat(pathb,f);
-
+		strcat(pathc,f);
 		
 		p=433494437U*2971215073U; //10th & 11th Fibonacci Primes 
 		m=0;

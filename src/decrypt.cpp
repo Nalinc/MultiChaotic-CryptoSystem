@@ -208,10 +208,10 @@ void Decrypt::func()
  char* Decrypt::decimal_to_binary(long long n)
 {
    long long c, d, count;
-    char *pointer;
+   char *pointer;
  
    count = 0;
-   pointer = (char*)malloc(32+1);
+   pointer = (char*)malloc(32);
  
    if ( pointer == NULL )
       exit(EXIT_FAILURE);
@@ -253,8 +253,12 @@ void Decrypt::Decode()
       {	      
 		r=strtol(tmp, (char **)NULL, 2);
         printf("%c",r);		
+//        printf("%s\n",tmp);
        }
-	free(rdf);
+       
+	fclose(rdf);
+	free(tmp);
+	
 }
 
 /*
@@ -266,5 +270,5 @@ int main()
 
 return 0;
 }
-
 */
+

@@ -9,19 +9,21 @@
 //#include "cipher.h"
 /*
   
- ./run -GUI									:GUI interface
- ./run -CLI
- ./run -help                                :Displays Help
- ./run -sync								:synchronizes the systems
- ./run -p chaos								:plots 
+USAGE:
+	 ./run.sh -GUI(default)			:Enables GUI Mode
+	 ./run.sh -CLI -[t|i|a|v]		:Enables CLI Mode
+	 ./run.sh -help				:Displays usage/help section
+	 ./run.sh -sync				:(Re)Synchronizes chaotic systems
+	 ./run.sh -p chaos			:Plots Chaotic Maps
 
- ./run -e -t filename
- ./run -e -i filename
- ./run -e -[a|v] filename
+	 ./run.sh -et <filename>		:Encrypts Text as given in <filename>
+	 ./run.sh -ei <imgname>			:Encrypts Image named <imgname>
+	 ./run.sh -e[a|v] <filename>		:Encrypts audio/video named <filename>
 
- ./run -d -t filename
- ./run -d -i filename
- ./run -d -[a|v] filename
+	 ./run.sh -dt <filename>		:Decrypts Text as given in <filename>
+	 ./run.sh -di <filename>		:Decrypts Image named <filename>
+	 ./run.sh -d[a|v] <filename>		:Decrypts audio/video named <filename>
+
 
  */
 
@@ -32,11 +34,14 @@ int main(int argc, char **argv)
 	
 bool flag=true;
 
+/*
 if(argc==1 || (argc==2 && strcmp(argv[1],"-GUI")))
 {
     cout<<"\n\nSHOW GUI\n\n";
 }
-else if(argc==2 && (strcmp(argv[1],"-sync")==0)  )
+else 
+*/
+if((argc==2 && strcmp(argv[1],"-sync")==0 )|| (argc==3 && strcmp(argv[1],"-CLI")==0) )
 {
 	label:
 
@@ -49,49 +54,46 @@ else if(argc==2 && (strcmp(argv[1],"-sync")==0)  )
 	cout<<"\n\n#Rossler Attractor synchronising AT STEP: "<<ros.i<<"\n";
 	cout<<"\n\n#RabinoFabik synchronising AT STEP: "<<rf.i<<"\n";
 
-    flag=false;
+    if(strcmp(argv[1],"-CLI")==0)
+    goto loc;
 }
- if((argc==4 || argc==5) && strcmp(argv[1],"-e")==0 && strcmp(argv[2],"-i")==0)
+if(argc==2 && (strcmp(argv[1],"-GUI")==0)  )
 {
-	//argv[3] contains filename
-	if(argc==5 && strcmp(argv[4],"-all")==0 && flag)
-	  goto label;
-
+	//TODO
+}
+ if(argc==3  && strcmp(argv[1],"-ei")==0)
+{
+	//argv[2] contains filename
 	cout<<"Code To encrypt Image\n";
 }
- if((argc==4 || argc==5)&& strcmp(argv[1],"-e")==0 && strcmp(argv[2],"-t")==0 )
+ if(argc==3  && strcmp(argv[1],"-et")==0)
 {
-	//argv[3] contains filename
-	if(argc==5 && strcmp(argv[4],"-all")==0 && flag)
-	  goto label;
+	//argv[2] contains filename
+	loc:
 		
 	cout<<"\nCode To encrypt Text\n";
 	
-	RT r(argv[3]);
-	Encrypt obj1("text",argv[3]);
+	RT r(argv[2]);
+	Encrypt obj1("text",argv[2]);
 }
- if((argc==4 || argc==5) && strcmp(argv[1],"-e")==0 && (strcmp(argv[2],"-a")==0 || strcmp(argv[2],"-v")==0))
+ if(argc==3  && (strcmp(argv[1],"-ea")==0 || strcmp(argv[1],"-ev")==0))
 {
 	//argv[3] contains filename
-	if(argc==5 && strcmp(argv[4],"-all")==0 && flag)
-	  goto label;
-
 	cout<<"Code To encrypt Audio/video\n";
 }
- if(argc==4 && strcmp(argv[1],"-d")==0 && strcmp(argv[2],"-i")==0)
+ if(argc==3  && strcmp(argv[1],"-di")==0)
 {
-	//argv[3] contains filename
+	//argv[2] contains filename
 	cout<<"Code To decrypt Image\n";
 }
- if(argc==4 && strcmp(argv[1],"-d")==0 && strcmp(argv[2],"-t")==0 )
+ if(argc==3  && strcmp(argv[1],"-dt")==0)
 {
-	//argv[3] contains filename
+	//argv[2] contains filename
 		
-	cout<<"\nCode To decrypt Text\n";
-	
-	Decrypt obj1("text",argv[3]);
+	cout<<"\nCode To decrypt Text\n";	
+	Decrypt obj1("text",argv[2]);
 }
- if(argc==4  && strcmp(argv[1],"-d")==0 && (strcmp(argv[2],"-a")==0 || strcmp(argv[2],"-v")==0))
+ if(argc==3  && (strcmp(argv[1],"-da")==0 || strcmp(argv[1],"-dv")==0))
 {
 	//argv[3] contains filename
 
@@ -101,3 +103,4 @@ else if(argc==2 && (strcmp(argv[1],"-sync")==0)  )
 
 return 0;
 }
+
