@@ -100,7 +100,9 @@ class Encrypt
 			  }
 
 			  status=this->encodeAV();			
-          
+              fclose(file1);
+			  fclose(file2);
+
 			if(status==1)
 			{
 				cout<<"\t\tFile encoded at "<<pathc<<endl<<endl;
@@ -113,8 +115,6 @@ class Encrypt
 	{
 		t=NULL;
 		f=NULL;
-        fclose(file1);
-        fclose(file2);
 	}
 
 	
