@@ -259,7 +259,7 @@ void Encrypt::Encode()
 	  {  printf("\n\n decrypt.dat could not be opened for reading. \n\n ");
 	    exit(0);
 	  }
-	  printf("\n\nCipher Text: ");
+	  printf("\n\nCipher Text: \n");
       while(fscanf(rdf,"%s",tmp)!=EOF)
       {	      
 		r=strtol(tmp, (char **)NULL, 2);
@@ -270,6 +270,7 @@ void Encrypt::Encode()
         fprintf(wrf,"\n");	
 	fclose(wrf);
 	fclose(rdf);
+	free(tmp);
 
 }
 

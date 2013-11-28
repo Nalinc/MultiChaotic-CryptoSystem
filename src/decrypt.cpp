@@ -250,23 +250,29 @@ long long Decrypt::BlumBlumShub(long long num)  //PRNG
 void Decrypt::Decode()
 {
 	char *tmp;
-	FILE *rdf;
+	FILE *rdf,*wrf;
 	tmp=(char*)malloc(32);
      
-      rdf = fopen(pathb,"rb");//"../decrypted/decrypt.dat", "rb");				       //open "txtbin.dat" for reading				   
+      rdf = fopen(pathb,"rb");//"../encrypted/bin/encrypt.dat", "rb");				       //open "txtbin.dat" for reading				   
+      wrf = fopen(pathc,"w");//"../decrypted/decrypt.dat", "rb");				       //open "txtbin.dat" for reading				   
+      
       if(rdf == NULL||tmp==NULL) 
 	  {  printf("\n\n decrypt.dat could not be opened for reading. \n\n ");
 	    exit(0);
 	  }
+	  printf("\n\nDecoded Text: \n");
 	  
       while(fscanf(rdf,"%s",tmp)!=EOF)
       {	      
 		r=strtol(tmp, (char **)NULL, 2);
         printf("%c",r);		
-//        printf("%s\n",tmp);
+        fprintf(wrf,"%c",r);
        }
+        printf("\n");	
+        fprintf(wrf,"\n");	
        
 	fclose(rdf);
+	fclose(wrf);
 	free(tmp);
 	
 }
