@@ -36,7 +36,10 @@ class Encrypt
 	void Encode();
 	int LineCount();
 	int pass;
+    FILE *file1,*file2;
+
 	unsigned long  p;
+
 	Encrypt()
 	{
 		//do nothing
@@ -52,6 +55,7 @@ class Encrypt
 		strcpy(pathc,"./encrypted/");
 		//patha="/orig/bin/"
 		//patha="/encrypted"
+		
 		
 		strcat(patha,f);
 		strcat(pathb,f);
@@ -81,10 +85,26 @@ class Encrypt
 		
 		else if(strcmp(this->t,"av")==0)
 		{
-			status=this->encodeAV();			
+
+ 		  	  string spath="./orig/bin";
+			  string dpath="./encrypted";
+
+			  printf("\n%s\n",patha);	
+		      file1=fopen((char*)patha,"rb");
+		      file2=fopen((char*)pathc,"wb");
+
+			  if(file2 == NULL || file1 == NULL ) 
+			  {
+				 printf("\n\n 1 could not be opened for reading. \n\n ");
+				 exit(0);
+			  }
+
+			  status=this->encodeAV();			
+          
 			if(status==1)
 			{
-				cout<<"\t\tAV encoded at "<<pathb<<endl<<endl;
+				cout<<"\t\tFile encoded at "<<pathc<<endl<<endl;
+				exit(0);
 			}
 		}
 	}
@@ -93,6 +113,8 @@ class Encrypt
 	{
 		t=NULL;
 		f=NULL;
+        fclose(file1);
+        fclose(file2);
 	}
 
 	

@@ -33,6 +33,7 @@ class Decrypt
 	int pass;
 	char *xorr;
 	char r;
+    FILE *file1,*file2;	
 	unsigned long  p;
 	Decrypt()
 	{
@@ -47,6 +48,7 @@ class Decrypt
 				
 		strcpy(patha,"./encrypted/bin/");
 		strcpy(pathb,"./decrypted/bin/");
+		strcpy(pathc,"./decrypted/");
 	//	strcpy(pathc,"./decrypted/");
 		//patha="/encrypted/"
 		//pathb="/decrypted/"
@@ -79,10 +81,16 @@ class Decrypt
 		
 		else if(strcmp(this->t,"av")==0)
 		{
+	  	    string spath="./encrypted";
+		    string dpath="./decrypted";
+	        file1=fopen((spath + "/" + f).c_str(),"rb");
+	        file2=fopen((dpath + "/" + f).c_str(),"wb");
+
+
 			status=this->decodeAV();			
 			if(status==1)
 			{
-				cout<<"\t\tAV decoded at "<<pathb<<endl<<endl;
+				cout<<"\t\tFile decoded at "<<pathc<<endl<<endl;
 			}
 		}
 	}

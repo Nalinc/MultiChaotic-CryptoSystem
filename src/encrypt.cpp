@@ -27,6 +27,16 @@ return 1;
 //<EncodeAV>
 int Encrypt::encodeAV()
 {
+    int byt;
+	while((byt=fgetc(file1)) != EOF)
+	{
+	    byt = byt^10110;     //XORing with 10110		
+		fputc(byt,file2);  //write encrypted form to target file(2nd cmd line arg!)
+	}
+	
+	fclose(file1);
+	fclose(file2);
+		
 cout<<"\n\t\t\tTask Completed..";
 return 1;
 }

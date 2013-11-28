@@ -80,6 +80,9 @@ if(argc==2 && (strcmp(argv[1],"-GUI")==0)  )
 {
 	//argv[3] contains filename
 	cout<<"Code To encrypt Audio/video\n";
+	Encrypt obj1("av",argv[2]);
+	cout<<"done";
+
 }
  if(argc==3  && strcmp(argv[1],"-di")==0)
 {
@@ -96,8 +99,8 @@ if(argc==2 && (strcmp(argv[1],"-GUI")==0)  )
  if(argc==3  && (strcmp(argv[1],"-da")==0 || strcmp(argv[1],"-dv")==0))
 {
 	//argv[3] contains filename
-
 	cout<<"Code To decrypt Audio/video\n";
+	Decrypt obj1("av",argv[2]);
 }
 
 
