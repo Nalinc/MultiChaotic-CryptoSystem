@@ -1,4 +1,5 @@
-
+clear;
+echo -e " "
 if [ "$1" == "-GUI" ];
 then
 	./GUI-Build/./hello
@@ -15,6 +16,26 @@ then
 elif [ "$1" == "-CLI" ];
 then
 	./main -CLI sample.dat   #shud wrk on txt
+
+elif [ "$1" == "-show" ];
+then
+        cat ./orig/bin/$2
+        
+elif [ "$1" == "-showe" ];
+then 
+        cat ./encrypted/$2
+
+elif [ "$1" == "-showbe" ];
+then
+        cat ./encrypted/bin/$2
+
+elif [ "$1" == "-showd" ];
+then 
+        cat ./decrypted/$2
+
+elif [ "$1" == "-showbd" ];
+then 
+        cat ./decrypted/bin/$2
 
 elif [ "$1" == "-et" ];
 then
@@ -60,11 +81,17 @@ then
 	echo -e "\t ./run.sh -sync\t\t\t\t:(Re)Synchronizes chaotic systems"
 	echo -e "\t ./run.sh -p chaos\t\t\t:Plots Chaotic Maps"
 	echo -e "\n\t ./run.sh -et <filename>\t\t:Encrypts Text as given in <filename>"
-    echo -e "\t ./run.sh -ei <filename>\t\t:Encrypts Image named <filename>"
+        echo -e "\t ./run.sh -ei <filename>\t\t:Encrypts Image named <filename>"
    	echo -e "\t ./run.sh -e[a|v] <filename>\t\t:Encrypts audio/video named <filename>"
 	echo -e "\n\t ./run.sh -dt <filename>\t\t:Decrypts Text as given in <filename>"
 	echo -e "\t ./run.sh -di <filename>\t\t:Decrypts Image named <filename>"	   
-	echo -e "\t ./run.sh -d[a|v] <filename>\t\t:Decrypts audio/video named <filename>\n"
+	echo -e "\t ./run.sh -d[a|v] <filename>\t\t:Decrypts audio/video named <filename>"
+        echo -e "\n\t ./run.sh -show <filename>\t\t:Displays the binary of original text"
+        echo -e "\t ./run.sh -showe <filename> \t\t:Displays Encrypted text in <filename>"
+        echo -e "\t ./run.sh -showbe <filename> \t\t:Displays Binary of Encrypted text in <filename>"
+        echo -e "\t ./run.sh -showd <filename> \t\t:Displays Decrypted text in <filename>"
+        echo -e "\t ./run.sh -showbd <filename> \t\t:Displays Binary of Decrypted text in <filename>"
+
 else
 	echo "run.sh: Not a valid command "
 	echo -e "\nsee 'run.sh -help' to know more!\n"
