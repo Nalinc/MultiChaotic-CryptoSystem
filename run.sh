@@ -1,5 +1,5 @@
 clear;
-echo -e " "
+echo -e "\n#Multi Chaotic Crypto-System\n"
 if [ "$1" == "-GUI" ];
 then
 	./GUI-Build/./hello
