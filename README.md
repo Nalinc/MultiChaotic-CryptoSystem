@@ -1,4 +1,4 @@
-##MultiChaotic System ##
+##MultiChaotic Crypto-System ##
 
 ----------------------------------------
 * **Date of creation:** 24/10/2013

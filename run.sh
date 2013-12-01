@@ -15,7 +15,7 @@ then
 
 elif [ "$1" == "-CLI" ];
 then
-	./main -CLI sample.dat   #shud wrk on txt
+	./main -CLI sample.dat  
 
 elif [ "$1" == "-show" ];
 then
