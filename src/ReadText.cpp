@@ -6,7 +6,7 @@ void RT::wrap()
      char text[100000];
      fflush(stdin);
      std::string str;  
-
+     
      //printf("\n\n Enter the text which you want to encrypt : ");
      fgets(text, sizeof(text), stdin);
 		

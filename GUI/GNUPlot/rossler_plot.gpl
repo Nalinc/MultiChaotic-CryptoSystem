@@ -1,0 +1,14 @@
+set term png
+set output 'img_rossler.png'
+set origin 0,0
+set xtics 0,5,50
+set ytics
+set mxtics 1
+set mytics 1
+
+set title "Synchronization of two Rossler attractors"
+set xlabel "Number of iterations (in thousands)"
+set ylabel "Variation in the difference of the two systems"
+set key below
+
+plot "rossler_datum.dat" using 1:($5-$2) title "d[0] = y[0] - x[0]" with lines, "rossler_datum.dat" using 1:($6-$3) title "d[1] = y[1] - x[1]" with lines, "rossler_datum.dat" using 1:($7-$4) title "d[2] = y[2] - x[2]" with lines

@@ -113,14 +113,19 @@ return num;
 //<func>
 void Encrypt::func()
 {
-  FILE *fpw;							
-  
+  FILE *fpw, *keyFile;							
+  keyFile = fopen("keyFile.dat","w");
   fpw = fopen(pathb,"w");//"../encrypted/encrypt.dat", "w");					       //create "encrypt.dat" for writing
   
   if(fpw == NULL) 
   {
      printf("\n\n encrypt.dat could not be opened for writing. \n\n ");
      exit(0);
+  }
+  if(keyFile==NULL)
+  {
+          printf("ERROROOROR");
+          exit(0);
   }
   
   else
@@ -158,7 +163,12 @@ void Encrypt::func()
         nn=concat(nn,((fabs(atof(ptd))-abs(atoi(ptd)))*1000000));
         nn=BlumBlumShub(nn); //PRNG
         key=decimal_to_binary(nn);
-        
+
+
+        fprintf(keyFile,"%s",key);
+        fprintf(keyFile,"\n");
+  
+      
   //      Encode(fpw);        
     
         fpr = fopen(patha,"rb");				       //open "txtbin.dat" for reading				   
@@ -206,6 +216,8 @@ void Encrypt::func()
  free(key); 
  fclose(fpw); 
  fclose(rdfile);
+ fclose(keyFile);
+
 }
 //</func>
 //--

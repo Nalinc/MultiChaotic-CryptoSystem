@@ -1,13 +1,16 @@
 clear;
 echo -e "\n#Multi Chaotic Crypto-System\n"
+chmod a+x ./main
+
 if [ "$1" == "-GUI" ];
 then
-	./GUI-Build/./hello
+     chmod a+x ./GUI-BUILD/./GUI
+	./GUI-BUILD/./GUI
 
 elif [ "$1" == "-p" -a "$2" == "chaos" ];
 then
-	gnuplot ./GNUPlot/arnold_plot.gpl 
-	eog img_arnold.png
+	gnuplot ./GNUPlot/*.gpl 
+	eog img_rossler.png
 
 elif [ "$1" == "-sync" ];
 then
@@ -15,7 +18,7 @@ then
 
 elif [ "$1" == "-CLI" ];
 then
-	./main -CLI sample.dat  
+	./main -CLI sample.dat   #shud wrk on txt
 
 elif [ "$1" == "-show" ];
 then
@@ -43,7 +46,9 @@ then
 
 elif [ "$1" == "-ei" ];
 then
-	./main -ei $2
+#	./main -ei $2
+	echo -e "\nplease wait while the system generates images...\n"
+	python ./src/arnold_map.py $2
 
 elif [ "$1" == "-ea" ];
 then
@@ -59,7 +64,9 @@ then
 
 elif [ "$1" == "-di" ];
 then
-	./main -di $2
+#	./main -di $2
+	echo -e "\nplease wait while the system generates images...\n"
+	python ./src/arnold_map.py $2
 
 elif [ "$1" == "-da" ];
 then

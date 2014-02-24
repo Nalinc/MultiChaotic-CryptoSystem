@@ -1,9 +1,9 @@
 #include "rossler.h"
-#include "arnold.h"
-#include "RabinoFabrik.h"
+#include "lorenz.h"
 #include "encrypt.h"
 #include "decrypt.h"
 #include "ReadText.h"
+#include "RabinoFabrik.h"
 #include <string.h>
 
 //#include "cipher.h"
@@ -46,11 +46,12 @@ if((argc==2 && strcmp(argv[1],"-sync")==0 )|| (argc==3 && strcmp(argv[1],"-CLI")
 	label:
 
 	//Synchronize Systems
-	Arnold arn;
+
+	Lorenz l;
 	Rossler ros;
 	RabinoFabrik rf;
 
-	cout<<"\n\n#Arnold's Cat synchronising AT STEP: "<<arn.i<<"\n";
+	cout<<"\n\n#Lorenz Attractor synchronising AT STEP: "<<l.i<<"\n";
 	cout<<"\n\n#Rossler Attractor synchronising AT STEP: "<<ros.i<<"\n";
 	cout<<"\n\n#RabinoFabik synchronising AT STEP: "<<rf.i<<"\n";
 
@@ -69,6 +70,7 @@ if(argc==2 && (strcmp(argv[1],"-GUI")==0)  )
  if(argc==3  && strcmp(argv[1],"-et")==0)
 {
 	//argv[2] contains filename
+	//./run.sh -et FILENAME
 	loc:
 		
 	cout<<"\nCode To encrypt Text\n";
